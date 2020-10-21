@@ -28,11 +28,12 @@ public class RabbitMqConfig {
     @Value("${rabbitmq.provider.routingKey}")
     private String routingKey;
     
-    private String queueName = "directDemo";
+    @Value("${rabbitmq.provider.queue}")
+    private String queueName;
     
     @Bean
     public Queue queue() {
-        return new Queue(queueName,true);
+        return new Queue(this.queueName,true);
     }
 
     /**

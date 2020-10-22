@@ -7,6 +7,7 @@
     <modules>
         <module>mq-provider</module>
         <module>mq-consumer</module>
+        <module>mq-common</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

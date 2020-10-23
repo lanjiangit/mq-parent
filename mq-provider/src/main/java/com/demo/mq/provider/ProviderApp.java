@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @SpringBootApplication
 @PropertySource({"classpath:application-mq.properties"})
-@ComponentScan({"com.demo.mq.common.config"})
+@ComponentScan({"com.demo.mq"})
 public class ProviderApp {
     public static void main(String[] args) {
         SpringApplication.run(ProviderApp.class,args);

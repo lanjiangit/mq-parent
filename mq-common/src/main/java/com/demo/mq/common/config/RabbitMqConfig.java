@@ -42,18 +42,18 @@ public class RabbitMqConfig {
      */
     @Bean
     public DirectExchange directExchange() {
-        return new DirectExchange(RabbitMqConstant.OrderDirectExchange);
+        return new DirectExchange(RabbitMqConstant.OrderDirectExchange,false,false);
     }
     
-    @Bean
-    public FanoutExchange fanoutExchange() {
-        return new FanoutExchange(RabbitMqConstant.OrderFanoutExchange);
-    }
-    
-    @Bean
-    public TopicExchange topicExchange() {
-        return new TopicExchange(RabbitMqConstant.OrderTopicExchange);
-    }
+    //@Bean
+    //public FanoutExchange fanoutExchange() {
+    //    return new FanoutExchange(RabbitMqConstant.OrderFanoutExchange);
+    //}
+    //
+    //@Bean
+    //public TopicExchange topicExchange() {
+    //    return new TopicExchange(RabbitMqConstant.OrderTopicExchange);
+    //}
     
     @Bean
     public Binding directStockBinding() {

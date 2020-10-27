@@ -2,7 +2,6 @@ package com.demo.mq.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * @author lanjian
@@ -10,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
  * @date 2020/10/16 15:45
  */
 @SpringBootApplication
-@PropertySource({"classpath:application-mq.properties"})
+//@PropertySource({"classpath:application-mq.properties"})
 public class ConsumerApp {
     public static void main(String[] args) {
         SpringApplication.run(ConsumerApp.class,args);

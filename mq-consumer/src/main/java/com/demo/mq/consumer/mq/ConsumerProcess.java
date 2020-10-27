@@ -1,10 +1,9 @@
 package com.demo.mq.consumer.mq;
 
-import com.demo.mq.common.constant.RabbitMqConstant;
-import com.demo.mq.common.eo.MessageEo;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.annotation.*;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
@@ -29,11 +28,10 @@ import java.io.IOException;
     //    exchange = @Exchange(value = RabbitMqConstant.OrderDirectExchange),
     //    key = {RabbitMqConstant.OrderDirectStockRoutingKey}
     //)},
-    queues = {RabbitMqConstant.StockQueue})
+    queues = {"StockQueue"})
 public class ConsumerProcess {
     @RabbitHandler
-    public void receive(MessageEo msg, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
-        System.out.println("消费消息: " + msg.getBody());
+    public void receive(String msg, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
         
         // todo 要处理的业务逻辑
         
@@ -58,6 +56,7 @@ public class ConsumerProcess {
          */
         //channel.basicReject(tag,false);
         
+        System.out.println("消费消息: " + msg);
     }
     
 }

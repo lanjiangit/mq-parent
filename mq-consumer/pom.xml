@@ -11,12 +11,12 @@
 
     <artifactId>mq-consumer</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.demo.mq</groupId>
-            <artifactId>mq-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
+<!--    <dependencies>-->
+<!--        <dependency>-->
+<!--            <groupId>com.demo.mq</groupId>-->
+<!--            <artifactId>mq-common</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+<!--    </dependencies>-->
 
 </project>

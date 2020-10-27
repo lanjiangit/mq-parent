@@ -22,7 +22,8 @@ public class ConfirmCallbackImpl implements RabbitTemplate.ConfirmCallback,Rabbi
 
     @PostConstruct
     public void init(){
-        //指定调用 ConfirmCallback 的对象,该对象必须实现RabbitTemplate.ConfirmCallback接口
+        // 指定调用 confirm 方法的对象,该对象必须实现RabbitTemplate.ConfirmCallback接口,且一个 RabbitTemplate 实例只能指定一个对象
+        // returnedMessage 方法同理
         rabbitTemplate.setConfirmCallback(this);
         rabbitTemplate.setReturnCallback(this);
     }
@@ -43,7 +44,7 @@ public class ConfirmCallbackImpl implements RabbitTemplate.ConfirmCallback,Rabbi
     }
 
     /**
-     * 消息发送到exchange,但没有进入queue时,回调的方法
+     * 消息发送到exchange,但进入queue失败时,回调的方法
      * @param message 消息体
      * @param replyCode 应答码
      * @param replyText 应答内容
@@ -52,10 +53,11 @@ public class ConfirmCallbackImpl implements RabbitTemplate.ConfirmCallback,Rabbi
      */
     @Override
     public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
-        System.out.println("replyCode: " + replyCode);
-        System.out.println("replyText: " + replyText);
-        System.out.println("exchange: " + exchange);
-        System.out.println("routingKey: " + routingKey);
-        System.out.println("message: " + message);
+        log.info("消息无法到达queue,请检查配置......");
+        log.info("replyCode: " + replyCode);
+        log.info("replyText: " + replyText);
+        log.info("exchange: " + exchange);
+        log.info("routingKey: " + routingKey);
+        log.info("message: " + message);
     }
 }
